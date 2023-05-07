@@ -1,0 +1,48 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Alumnos</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- LISTADO DE ALUMNOS -->
+            {%for alumno in alumnos %}
+            <tr>
+              <td>{{alumno.alumno_id}}</td>
+              <td>{{alumno.alumno_nombre}}</td>
+              <td>{{alumno.alumno_email}}</td>
+              <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#updateUser"><a href="update/{{ alumno.alumno_id }}/"
+                  style="text-decoration: none; color: white;">Editar</a></button>
+                <button type="button" class="btn btn-danger"><a href="delete/{{ alumno.alumno_id }}/"
+                    style="text-decoration: none; color: white;">Eliminar</a></button>
+              </td>
+            </tr>
+            {% endfor %}
+
+            <!----------------------------->
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevoUsuario">
+        Nuevo Alumno
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
